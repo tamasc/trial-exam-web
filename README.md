@@ -19,7 +19,6 @@ Initialize a node package in this folder.
 The frontend should have one page consisting of the following:
  - A text area to place the encrypted text
  - A number input to specify the shift
- - A paragraph to display the decoded message
  - A button to send the request and display the decoded message
  - A list of all previously decoded messages
 
