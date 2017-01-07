@@ -50,7 +50,7 @@ The decryption should be done by a backend service:
     }
   ```
    - It should save the decoded text to a database
-  - It should have a `GET` endpoint on the path: `/decode/all`:
+ - It should have a `GET` endpoint on the path: `/decode/all`:
    - It should respond with all the decoded text from the database in the following format:
    ```json
     {
