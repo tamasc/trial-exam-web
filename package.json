@@ -1,0 +1,29 @@
+{
+  "name": "trial-exam-web",
+  "version": "1.0.0",
+  "description": "- Fork this repository under your own account\r  - Clone the forked repository to your computer\r  - Commit your progress frequently and with descriptive commit messages\r  - All your answers and solutions should go in this repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamasc/trial-exam-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamasc/trial-exam-web/issues"
+  },
+  "homepage": "https://github.com/tamasc/trial-exam-web#readme",
+  "devDependencies": {
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0"
+  }
+}
