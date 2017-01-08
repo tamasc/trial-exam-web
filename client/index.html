@@ -8,22 +8,24 @@
    <body>
       <h1>Caesar Cipher</h1>
       <form id="cipher" action="index.html">
-         <input type="text" name="shift" placeholder="shift (-25<x<25)">
+         <input id="shift" type="text" name="shift" placeholder="shift (-25<x<25)">
          <textarea form="cipher" name="text" rows="8" cols="50" placeholder="text to en- or decode"></textarea>
          <!-- <input type="text" name="text" placeholder="text to en- or decode"> -->
-         <input type="submit" name="submit-text">
+         <input id="submit" type="submit" name="submit-text">
       </form>
       <div class="wrapper">
          <section>
             <h2>Submitted text</h2>
-            <p></p>
+            <p id="submittedText"></p>
          </section>
          <section>
             <h2>Decoded text</h2>
-            <p></p>
+            <p id="decodedText"></p>
          </section>
       </div>
-      <section id="previous-messages"></section>
+      <section id="previous-messages">
+        <ol></ol>
+      </section>
       <script src="index.js"></script>
    </body>
 </html>
