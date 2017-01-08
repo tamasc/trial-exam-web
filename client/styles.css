@@ -3,6 +3,10 @@ body {
    flex-direction: column;
 }
 
+section {
+  margin: 20px;
+}
+
 .wrapper {
    display: flex;
 }
@@ -25,3 +29,17 @@ input[name="shift"] {
 textarea {
    vertical-align: top;
 }
+
+.error {
+  color: red;
+}
+
+.ok {
+  color: green;
+}
+
+.loading {
+  color: gray;
+}
+
+.

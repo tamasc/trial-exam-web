@@ -10,8 +10,7 @@
       <form id="cipher" action="index.html">
          <input id="shift" type="text" name="shift" placeholder="shift (-25<x<25)">
          <textarea form="cipher" name="text" rows="8" cols="50" placeholder="text to en- or decode"></textarea>
-         <!-- <input type="text" name="text" placeholder="text to en- or decode"> -->
-         <input id="submit" type="submit" name="submit-text">
+         <input type="button" name="submit-text" value="decode">
       </form>
       <div class="wrapper">
          <section>
@@ -23,9 +22,13 @@
             <p id="decodedText"></p>
          </section>
       </div>
+      <section>
+        <h3 id="status"></h3>
+        <p id="error-message"></p>
+      </section>
       <section id="previous-messages">
         <ol></ol>
       </section>
-      <script src="index.js"></script>
+      <script src="./index.js"></script>
    </body>
 </html>

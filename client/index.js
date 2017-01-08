@@ -3,15 +3,17 @@
 var app = (function () {
   var fireApp = function () {
     ajax.getList(view.renderList);
-    document.getElementById('submit').addEventListener('click', function () {
-      var message = document.querrySelector('textarea').value;
-      var shift = document.querrySelector('#shift').value;
+    document.querySelector('input[type=button]').addEventListener('click', function () {
+      var message = document.querySelector('textarea').value;
+      var shift = document.querySelector('#shift').value;
+      document.querySelector('form').reset();
       var dataToSend = {
         "shift": shift,
-        "text": message
+        "text": message,
       };
-      view.showMessage(dataToSend.shift);
-      ajax.post(dataToSend, view.showdecodedMessage);
+      view.showMessage(dataToSend.text);
+      ajax.post(dataToSend, view.showDecodedMessage);
+      ajax.getList(view.renderList);
     });
   };
 
@@ -22,6 +24,9 @@ var app = (function () {
 
 var ajax = (function () {
   var open = function (request, url, dataToSend, callback) {
+    view.statusBar.innerText = 'Loading';
+    view.statusBar.classList = ['loading'];
+    view.errorMessage.innerText = '';
     var data;
     var xhr = new XMLHttpRequest();
     xhr.open(request, url, true);
@@ -39,45 +44,70 @@ var ajax = (function () {
     var request = 'GET';
     var url = 'http://localhost:3000/decode/all';
     var dataToSend = '';
-    var callback = view.renderList;
     open(request, url, dataToSend, callback);
+    // callback({
+    //   "all": [
+    //     "lorem ipsum dolor sit",
+    //     "consectetur adipisicing elit",
+    //     "ut labore et dolore magna aliqua"
+    //   ]
+    // });
   };
 
   var post = function (data, callback) {
     var request = 'POST';
     var url = 'http://localhost:3000/decode';
-    var callback = view.showMessage;
-    open(request, url, dataToSend, callback);
+    open(request, url, JSON.stringify(data), callback);
   };
 
   return {
-    list: getList,
+    getList: getList,
     post: post,
   }
 })();
 
 var view = (function () {
+  var statusBar = document.getElementById('status');
+  var errorMessage = document.getElementById('error-message');
+  var messageList = document.querySelector('ol');
+  var decodedText = document.getElementById('decodedText');
+  var list = document.querySelector('ol');
+
   var renderList = function (allMessages) {
-    var list = document.querrySelector('ol');
-    allMessages.forEach(function (item, index) {
+    list.innerHTML = '';
+    allMessages.all.forEach(function (item, index) {
       var listItem = document.createElement('li');
-      listItem.innerText = item[index];
-		});
-	}
+      listItem.innerText = item;
+      messageList.appendChild(listItem);
+    });
+  };
 
   var showMessage = function (message) {
     var submittedText = document.getElementById('submittedText');
     submittedText.innerText = message;
   };
 
-  var showdecodedMessage = function (message) {
-    var decodedText = document.getElementById('decodedText');
-    decodedText.innerText = message.text;
+  var showDecodedMessage = function (data) {
+    console.log(data);
+    if (data.status == 'ok') {
+      statusBar.innerText = data.status;
+      statusBar.classList = ['ok'];
+      decodedText.innerText = data.text;
+    } else {
+      statusBar.innerText = data.status;
+      statusBar.classList = ['error'];
+      errorMessage.innerText = data.error;
+      decodedText.innerText = '';
+    }
   };
 
   return {
+    statusBar: statusBar,
+    errorMessage: errorMessage,
     renderList: renderList,
     showMessage: showMessage,
-    showdecodedMessage: showdecodedMessage
+    showDecodedMessage: showDecodedMessage
   }
 })();
+
+app.fire();
