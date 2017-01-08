@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Caesar Cipher</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <h1>Caesar Cipher</h1>
+      <form id="cipher" action="index.html">
+         <input type="text" name="shift" placeholder="shift (-25<x<25)">
+         <textarea form="cipher" name="text" rows="8" cols="50" placeholder="text to en- or decode"></textarea>
+         <!-- <input type="text" name="text" placeholder="text to en- or decode"> -->
+         <input type="submit" name="submit-text">
+      </form>
+      <div class="wrapper">
+         <section>
+            <h2>Submitted text</h2>
+            <p></p>
+         </section>
+         <section>
+            <h2>Decoded text</h2>
+            <p></p>
+         </section>
+      </div>
+      <section id="previous-messages"></section>
+      <script src="index.js"></script>
+   </body>
+</html>
